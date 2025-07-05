@@ -1,41 +1,31 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// app.js
+// This file sets up the main Express application and mounts the user router.
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const express = require('express'); // <-- MISSING LINE 1: Require Express
+const app = express();              // <-- MISSING LINE 2: Create Express app instance
+const port = 3000;                  // Define a port for your server
 
-var app = express();
+// Import the user router (assuming it's in './routes/users.js')
+const userRouter = require('./routes/users');
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-app.use(logger('dev'));
+// Middleware to parse JSON requests (useful if you're sending JSON data)
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// Middleware to parse URL-encoded data (useful for form submissions)
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Mount the user router under the /users path.
+// All routes defined in userRouter will be prefixed with /users.
+app.use('/users', userRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// Basic root route for demonstration
+app.get('/', (req, res) => {
+  res.send('Welcome to the Express App!');
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+// Start the server // <-- MISSING LINE 3: Start the server
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+  console.log('Try navigating to:');
+  console.log(`- http://localhost:${port}/users`);
+  console.log(`- http://localhost:${port}/users/123`);
 });
-
-module.exports = app;
