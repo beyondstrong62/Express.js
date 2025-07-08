@@ -1,0 +1,65 @@
+/* Global styles for all pages */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #0056b3; /* Darker blue for headings */
+    margin-bottom: 15px;
+}
+
+a {
+    color: #007bff; /* Standard blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Container common to all pages for consistent layout */
+.container, .dashboard-container, .products-container, .profile-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 40px auto; /* Centering with top/bottom margin */
+}
+
+/* Adjusting max-widths for responsiveness */
+@media (max-width: 768px) {
+    .container, .dashboard-container, .products-container, .profile-container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+}

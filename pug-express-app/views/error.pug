@@ -1,0 +1,12 @@
+// views/error.pug
+extends layout
+
+block head
+  title #{title}
+
+block content
+  h1 Oh no! Something went wrong!
+  p We apologize for the inconvenience.
+  if message
+    p Error details: #{message}
+  a(href='/') Go to Home

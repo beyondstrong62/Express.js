@@ -1,0 +1,32 @@
+// views/index.pug
+//- This is a Pug comment
+doctype html
+html(lang='en')
+  head
+    title Pug Deep Dive Example
+    style.
+      body { font-family: sans-serif; margin: 20px; }
+      ul { list-style: none; padding: 0; }
+      li { margin-bottom: 5px; }
+      .admin-panel { background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-top: 20px; }
+
+  body
+    h1= title //- Variables
+
+    //- Conditionals
+    if user.isAdmin
+      .admin-panel
+        h3 Admin Actions
+        button.admin-btn Admin Panel
+
+    h2 Products
+    //- Iteration
+    ul
+      each product in products
+        li
+          strong= product.name
+          |  - $#{product.price.toFixed(2)}
+          if product.inStock
+            span (In Stock)
+          else
+            span (Out of Stock)

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css"> <style>
+        /* Specific styles for dashboard page */
+        .dashboard-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .notification-positive {
+            color: #28a745; /* Green */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .notification-none {
+            color: #6c757d; /* Gray */
+            font-style: italic;
+        }
+        .notification-unknown {
+            color: #dc3545; /* Red */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome to Your Dashboard!</h1>
+
+        <h2>Notifications:</h2>
+        <% if (notifications > 0) { %>
+            <p class="notification-positive">You have <%= notifications %> new messages.</p>
+        <% } else if (notifications === 0) { %>
+            <p class="notification-none">No new notifications.</p>
+        <% } else { %>
+            <p class="notification-unknown">Notification status unknown or invalid input.</p>
+        <% } %>
+
+        <p style="margin-top: 30px;"><a href="/">Go back to Home</a></p>
+    </div>
+</body>
+</html>
